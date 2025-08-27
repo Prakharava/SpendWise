@@ -212,55 +212,13 @@ SpendWise/
         └── main.jsx           # Entry point
 ```
 
-## 🧪 Testing
-
-### Backend Tests
-```bash
-cd spendwise-backend
-npm test
-```
-
-### Frontend Tests
-```bash
-cd spendwise-client
-npm test
-```
-
-## 🚀 Deployment
-
-### Backend Deployment
-1. Set `NODE_ENV=production` in your environment
-2. Configure a process manager (PM2, Forever, etc.)
-3. Set up a reverse proxy (Nginx, Apache)
-4. Configure SSL (Let's Encrypt)
-
-### Frontend Deployment
-1. Build the production bundle:
-   ```bash
-   cd spendwise-client
-   npm run build
-   ```
-2. Deploy the `build` folder to your hosting service (Vercel, Netlify, etc.)
-
-## 🤝 Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Please make sure to update tests as appropriate.
-
 ## 📜 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact
 
-Prakhar Srivastava - [@your_twitter](https://twitter.com/your_twitter) - your.email@example.com
+Prakhar Srivastava - prakhar.srivastava_cs22@gla.ac.in
 
 Project Link: [https://github.com/Prakharava/SpendWise](https://github.com/Prakharava/SpendWise)
 
