@@ -7,7 +7,6 @@
 
 A modern, full-stack web application for tracking personal finances, managing expenses, and gaining insights into spending habits.
 
-![SpendWise Dashboard](https://drive.google.com/file/d/1rlU8etG8evweqEvz2O-11Rji9azoMnNx/view?usp=drive_link)
 
 ## ✨ Features
 
