@@ -103,40 +103,6 @@ A modern, full-stack web application for tracking personal finances, managing ex
    npm start
    ```
 
-5. **Access the Application**
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:5000
-   - API Documentation: http://localhost:5000/api-docs (if using Swagger)
-
-## 🔧 Environment Variables
-
-### Backend (spendwise-backend/.env)
-```env
-# Server Configuration
-PORT=5000
-NODE_ENV=development
-
-# MongoDB
-MONGODB_URI=your_mongodb_connection_string
-
-# JWT
-JWT_SECRET=your_jwt_secret_key
-JWT_EXPIRE=30d
-JWT_COOKIE_EXPIRE=30
-
-# Security
-RATE_LIMIT_WINDOW_MS=15 * 60 * 1000  # 15 minutes
-RATE_LIMIT_MAX=100
-
-# Logging
-LOG_LEVEL=info
-```
-
-### Frontend (spendwise-client/.env)
-```env
-REACT_APP_API_URL=http://localhost:5000/api
-REACT_APP_GOOGLE_ANALYTICS_ID=your_ga_id  # Optional
-```
 
 ## 📁 Project Structure
 
