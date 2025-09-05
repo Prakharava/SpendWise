@@ -33,7 +33,10 @@ export const AuthProvider = ({ children }) => {
       const { user: userData, token } = await loginApi(credentials);
       localStorage.setItem('token', token);
       setUser(userData);
-      navigate('/dashboard');
+      // Use setTimeout to allow the state to update before navigating
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 0);
       return { success: true };
     } catch (error) {
       return { success: false, message: error.response?.data?.message || 'Login failed' };
@@ -45,7 +48,10 @@ export const AuthProvider = ({ children }) => {
       const { user: newUser, token } = await registerApi(userData);
       localStorage.setItem('token', token);
       setUser(newUser);
-      navigate('/dashboard');
+      // Use setTimeout to allow the state to update before navigating
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 0);
       return { success: true };
     } catch (error) {
       return { success: false, message: error.response?.data?.message || 'Registration failed' };

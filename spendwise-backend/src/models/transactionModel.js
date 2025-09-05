@@ -48,4 +48,8 @@ const transactionSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model('Transaction', transactionSchema);
+// Export two models bound to specific collections
+const IncomeTransaction = mongoose.model('IncomeTransaction', transactionSchema, 'transactions');
+const ExpenseTransaction = mongoose.model('ExpenseTransaction', transactionSchema, 'expenses');
+
+module.exports = { IncomeTransaction, ExpenseTransaction };

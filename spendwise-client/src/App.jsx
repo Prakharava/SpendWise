@@ -7,6 +7,7 @@ import Register from './pages/auth/Register';
 import Dashboard from './pages/Dashboard';
 import Analytics from './pages/Analytics';
 import NotFound from './pages/NotFound';
+import Settings from './pages/Settings';
 import { Toaster } from 'react-hot-toast';
 import Layout from './components/Layout';
 import './index.css';
@@ -26,6 +27,7 @@ function App() {
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/settings" element={<Settings />} />
           </Route>
         </Route>
 

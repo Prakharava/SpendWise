@@ -11,7 +11,7 @@ const categories = [
   { id: 'housing', name: 'Housing' },
   { id: 'utilities', name: 'Utilities' },
   { id: 'entertainment', name: 'Entertainment' },
-  { id: 'health', name: 'Health' },
+  { id: 'healthcare', name: 'Healthcare' },
   { id: 'education', name: 'Education' },
   { id: 'salary', name: 'Salary' },
   { id: 'freelance', name: 'Freelance' },
@@ -83,11 +83,11 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 border border-transparent dark:border-gray-700 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div className="absolute right-0 top-0 pr-4 pt-4">
                   <button
                     type="button"
-                    className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
+                    className="rounded-md bg-white dark:bg-gray-800 text-gray-400 hover:text-gray-500 focus:outline-none"
                     onClick={onClose}
                   >
                     <span className="sr-only">Close</span>
@@ -96,7 +96,7 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
                 </div>
                 <div>
                   <div className="mt-3 text-center sm:mt-0 sm:text-left">
-                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900 dark:text-gray-100">
                       {isEditing ? 'Edit Transaction' : 'Add New Transaction'}
                     </Dialog.Title>
                     <div className="mt-2">
@@ -109,7 +109,7 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
                             className={`flex-1 py-2 px-4 text-sm font-medium rounded-l-md ${
                               type === 'expense'
                                 ? 'bg-red-100 text-red-700 border-red-200 border-t border-b border-l'
-                                : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
                             }`}
                           >
                             Expense
@@ -120,7 +120,7 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
                             className={`flex-1 py-2 px-4 text-sm font-medium rounded-r-md ${
                               type === 'income'
                                 ? 'bg-green-100 text-green-700 border-green-200 border-t border-b border-r'
-                                : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
                             }`}
                           >
                             Income
@@ -129,14 +129,14 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
 
                         {/* Description */}
                         <div>
-                          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                          <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Description
                           </label>
                           <div className="mt-1">
                             <input
                               type="text"
                               id="description"
-                              className={`block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                              className={`block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-900 dark:text-gray-100 ${
                                 errors.description ? 'border-red-300' : 'border-gray-300'
                               }`}
                               {...register('description', { required: 'Description is required' })}
@@ -149,19 +149,19 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
 
                         {/* Amount */}
                         <div>
-                          <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
+                          <label htmlFor="amount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Amount
                           </label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                              <span className="text-gray-500 sm:text-sm">$</span>
+                              <span className="text-gray-500 dark:text-gray-400 sm:text-sm">$</span>
                             </div>
                             <input
                               type="number"
                               id="amount"
                               step="0.01"
                               min="0.01"
-                              className={`block w-full pl-7 pr-12 sm:text-sm border rounded-md ${
+                              className={`block w-full pl-7 pr-12 sm:text-sm border rounded-md dark:bg-gray-900 dark:text-gray-100 ${
                                 errors.amount ? 'border-red-300' : 'border-gray-300'
                               }`}
                               placeholder="0.00"
@@ -178,12 +178,12 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
 
                         {/* Category */}
                         <div>
-                          <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+                          <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Category
                           </label>
                           <select
                             id="category"
-                            className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border ${
+                            className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border dark:bg-gray-900 dark:text-gray-100 ${
                               errors.category ? 'border-red-300' : 'border-gray-300'
                             } focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md`}
                             defaultValue=""
@@ -210,14 +210,14 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
 
                         {/* Date */}
                         <div>
-                          <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+                          <label htmlFor="date" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Date
                           </label>
                           <div className="mt-1">
                             <input
                               type="date"
                               id="date"
-                              className={`block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                              className={`block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-900 dark:text-gray-100 ${
                                 errors.date ? 'border-red-300' : 'border-gray-300'
                               }`}
                               {...register('date', { required: 'Date is required' })}
@@ -244,7 +244,7 @@ const TransactionModal = ({ isOpen, onClose, onSave, transaction = null }) => {
                           </button>
                           <button
                             type="button"
-                            className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:col-start-1 sm:text-sm"
+                            className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-800 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:col-start-1 sm:text-sm"
                             onClick={onClose}
                           >
                             Cancel

@@ -11,33 +11,31 @@ A modern, full-stack web application for tracking personal finances, managing ex
 ## ✨ Features
 
 - **Dashboard Overview**
-  - Real-time financial summary
-  - Recent transactions
-  - Quick add expense/income
+  - Real-time balance with totals for income and expenses
+  - Recent transactions list with categories and notes
+  - Quick-add for income/expense
 
 - **Transaction Management**
-  - Add, edit, and delete transactions
-  - Categorize expenses
-  - Add notes and attachments
-  - Filter and search functionality
+  - Add, edit, and delete transactions (income and expenses)
+  - Categorize transactions (e.g., Food, Rent, Salary, etc.)
+  - Optional notes to describe transactions
+  - Filter and basic search functionality
 
 - **Analytics & Reports**
-  - Visual spending breakdown
-  - Monthly/Yearly trends
-  - Category-wise analysis
-  - Export reports (CSV/PDF)
+  - Visual spending breakdown by category
+  - Monthly trends of income vs expenses
+  - Category-wise charts (doughnut and line charts)
 
 - **User Experience**
   - Responsive design (mobile, tablet, desktop)
-  - Dark/Light theme
-  - Intuitive UI/UX with Tailwind CSS
-  - Keyboard shortcuts
+  - Dark/Light theme throughout
+  - Polished UI/UX with Tailwind CSS, Headless UI, and Heroicons
 
 - **Security**
-  - JWT Authentication
+  - JWT authentication
   - Password hashing with bcrypt
-  - Protected routes
-  - Input validation
+  - Protected routes (frontend guards + backend middleware)
+  - Input validation on server
 
 ## 🚀 Tech Stack
 
@@ -61,6 +59,46 @@ A modern, full-stack web application for tracking personal finances, managing ex
 - **Security**: Helmet, CORS, Rate Limiting
 - **Logging**: Morgan, Winston
 - **Environment Management**: dotenv
+
+## 🗄️ Data Storage in MongoDB (MongoDB Compass)
+
+All persisted data is stored in MongoDB. You can view and manage it using MongoDB Compass. Typical collections and document shapes:
+
+- __Database__: `spendwise` (or the database name in your `MONGODB_URI`)
+
+- __Collection__: `users`
+  - Example document
+    ```json
+    {
+      "_id": "ObjectId(...)",
+      "name": "Jane Doe",
+      "email": "jane@example.com",
+      "password": "$2b$10$hash...", // bcrypt hashed
+      "createdAt": "2025-09-05T00:00:00.000Z",
+      "updatedAt": "2025-09-05T00:00:00.000Z"
+    }
+    ```
+  - Indexes: unique index on `email`
+
+- __Collection__: `transactions`
+  - Stores both income and expense items.
+  - Example document
+    ```json
+    {
+      "_id": "ObjectId(...)",
+      "user": "ObjectId(<users._id>)",
+      "type": "expense", // or "income"
+      "amount": 1299.5,
+      "category": "Food",
+      "note": "Dinner with friends",
+      "date": "2025-09-05T00:00:00.000Z",
+      "createdAt": "2025-09-05T00:00:00.000Z",
+      "updatedAt": "2025-09-05T00:00:00.000Z"
+    }
+    ```
+  - Common indexes: `{ user: 1, date: -1 }`, `{ user: 1, category: 1 }`
+
+In MongoDB Compass, you’ll see these collections under your database. Income and expense data are differentiated by the `type` field within `transactions`. Authentication data (hashed passwords, emails, names) is stored in the `users` collection.
 
 ## 🛠️ Installation
 
@@ -99,9 +137,43 @@ A modern, full-stack web application for tracking personal finances, managing ex
    npm run dev
 
    # In a new terminal, from spendwise-client
-   npm start
+   npm run dev
    ```
 
+5. **Access the Application**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5000
+   - API Documentation: http://localhost:5000/api-docs (if using Swagger)
+
+## 🔧 Environment Variables
+
+### Backend (spendwise-backend/.env)
+```env
+# Server Configuration
+PORT=5000
+NODE_ENV=development
+
+# MongoDB
+MONGODB_URI=your_mongodb_connection_string
+
+# JWT
+JWT_SECRET=your_jwt_secret_key
+JWT_EXPIRE=30d
+JWT_COOKIE_EXPIRE=30
+
+# Security
+RATE_LIMIT_WINDOW_MS=15 * 60 * 1000  # 15 minutes
+RATE_LIMIT_MAX=100
+
+# Logging
+LOG_LEVEL=info
+```
+
+### Frontend (spendwise-client/.env)
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_GOOGLE_ANALYTICS_ID=your_ga_id  # Optional
+```
 
 ## 📁 Project Structure
 

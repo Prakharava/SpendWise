@@ -20,7 +20,6 @@ const Login = () => {
     
     if (success) {
       toast.success('Logged in successfully!');
-      navigate('/dashboard');
     } else {
       toast.error(message || 'Login failed. Please try again.');
     }
